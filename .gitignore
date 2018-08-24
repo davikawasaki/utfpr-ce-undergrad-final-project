@@ -102,3 +102,11 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# jsons
+crawlers/output
+crawlers/data
+crawlers/rota-dos-concursos/data
+
+# .idea
+.idea
