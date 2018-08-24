@@ -6,8 +6,11 @@ The delay on curricular education models have been discussed and questioned. The
 ## Table of Contents [WIP]
 
 1\. Crawling
+
 2\. Data Process
+
 3\. Data Manipulation in DB
+
 4\. ML Trainings
 
 ## Authors
