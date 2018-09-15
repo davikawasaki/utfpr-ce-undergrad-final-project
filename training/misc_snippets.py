@@ -30,3 +30,4 @@ def tokens_to_vector(tokens, label, word_index_map):
 
 def hasNumbers(s):
     return any(c.isdigit() for c in s)
+
