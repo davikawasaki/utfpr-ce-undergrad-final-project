@@ -1,0 +1,37 @@
+
+--------------------------------------
+REPORT FROM TRAINING - ITERATION 005
+--------------------------------------
+Algorithms used: svm_svc_rbf 
+--------------------------------------
+
+Database total questions: 4449
+Computer Network total questions: 5483
+
+--------------------------------------
+Normal training/test mode
+--------------------------------------
+Training mode: 80.0/20.0
+Training amount: 7946
+Testing amount: 1986
+
+--------------------------------------
+Results for SVM SVC RBF algorithm in normal training/test mode
+--------------------------------------
+Main Classification Rate: 0.5385002516356316
+Metrics:
+
+             precision    recall  f1-score   support
+
+        0.0       0.00      0.00      0.00       917
+        1.0       0.54      1.00      0.70      1070
+
+avg / total       0.29      0.54      0.38      1987
+
+
+Confusion Matrix:
+[[   0  917]
+ [   0 1070]]
+
+Time: 3063.33192801 seconds
+--------------------------------------

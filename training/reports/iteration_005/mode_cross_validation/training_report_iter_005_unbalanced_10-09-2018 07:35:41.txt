@@ -1,0 +1,146 @@
+
+--------------------------------------
+REPORT FROM TRAINING - ITERATION 005
+--------------------------------------
+Algorithms used: logistic_regression decision_tree svm_svc_linear multinomial_nb random-forest stochastic-gradient-descent-log stochastic-gradient-descent-svm 
+--------------------------------------
+
+Database total questions: 4449
+Computer Network total questions: 5483
+
+--------------------------------------
+Cross-validation mode with k-folds
+--------------------------------------
+Results for Logistic Regression algorithm in cross-validation mode
+--------------------------------------
+Main Classification Rate: 0.9496573496545657
+Metrics:
+
+             precision    recall  f1-score   support
+
+        0.0       0.96      0.92      0.94      4449
+        1.0       0.94      0.97      0.96      5483
+
+avg / total       0.95      0.95      0.95      9932
+
+
+Confusion Matrix:
+[[4099  350]
+ [ 150 5333]]
+
+Time: 55.5417830944 seconds
+--------------------------------------
+Results for Decision Tree algorithm in cross-validation mode
+--------------------------------------
+Main Classification Rate: 0.9451265381899298
+Metrics:
+
+             precision    recall  f1-score   support
+
+        0.0       0.94      0.94      0.94      4449
+        1.0       0.95      0.95      0.95      5483
+
+avg / total       0.95      0.95      0.95      9932
+
+
+Confusion Matrix:
+[[4167  282]
+ [ 264 5219]]
+
+Time: 1156.35444283 seconds
+--------------------------------------
+Results for SVM SVC Linear algorithm in cross-validation mode
+--------------------------------------
+Main Classification Rate: 0.9605309516031314
+Metrics:
+
+             precision    recall  f1-score   support
+
+        0.0       0.97      0.94      0.96      4449
+        1.0       0.95      0.98      0.96      5483
+
+avg / total       0.96      0.96      0.96      9932
+
+
+Confusion Matrix:
+[[4183  266]
+ [ 126 5357]]
+
+Time: 18336.8007441 seconds
+--------------------------------------
+Results for Multinomial Naive Bayes algorithm in cross-validation mode
+--------------------------------------
+Main Classification Rate: 0.9398911978432658
+Metrics:
+
+             precision    recall  f1-score   support
+
+        0.0       1.00      0.87      0.93      4449
+        1.0       0.90      1.00      0.95      5483
+
+avg / total       0.95      0.94      0.94      9932
+
+
+Confusion Matrix:
+[[3871  578]
+ [  19 5464]]
+
+Time: 51.595389843 seconds
+--------------------------------------
+Results for Random Forest algorithm in cross-validation mode
+--------------------------------------
+Main Classification Rate: 0.8130245340084559
+Metrics:
+
+             precision    recall  f1-score   support
+
+        0.0       0.87      0.69      0.77      4449
+        1.0       0.78      0.91      0.84      5483
+
+avg / total       0.82      0.81      0.81      9932
+
+
+Confusion Matrix:
+[[3069 1380]
+ [ 477 5006]]
+
+Time: 6311.80366206 seconds
+--------------------------------------
+Results for Stochastic Gradient Descent - Logistic Regression algorithm in cross-validation mode
+--------------------------------------
+Main Classification Rate: 0.9455294596494277
+Metrics:
+
+             precision    recall  f1-score   support
+
+        0.0       0.96      0.91      0.93      4449
+        1.0       0.93      0.97      0.95      5483
+
+avg / total       0.94      0.94      0.94      9932
+
+
+Confusion Matrix:
+[[4050  399]
+ [ 169 5314]]
+
+Time: 87.8274428844 seconds
+--------------------------------------
+Results for Stochastic Gradient Descent - Linear SVM algorithm in cross-validation mode
+--------------------------------------
+Main Classification Rate: 0.9467326473295806
+Metrics:
+
+             precision    recall  f1-score   support
+
+        0.0       0.95      0.94      0.95      4449
+        1.0       0.95      0.96      0.96      5483
+
+avg / total       0.95      0.95      0.95      9932
+
+
+Confusion Matrix:
+[[4179  270]
+ [ 211 5272]]
+
+Time: 72.964548111 seconds
+--------------------------------------

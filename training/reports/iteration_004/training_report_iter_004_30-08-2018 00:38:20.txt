@@ -1,0 +1,44 @@
+REPORT FROM TRAINING - ITERATION 004
+------------------
+
+LABEL 0.0 Computer Architecture total questions: 1062
+LABEL 1.0 Information Systems total questions: 3081
+LABEL 2.0 Operational System total questions: 2483
+
+Training mode: 80.0/20.0
+Training amount: 5301
+Testing amount: 1325
+
+--------------------------------------
+Logistic Regression Main Classification Rate: 0.7350943396226415
+Logistic Regression Metrics
+             precision    recall  f1-score   support
+
+        0.0       0.72      0.99      0.84       883
+        1.0       1.00      0.19      0.31       220
+        2.0       0.81      0.26      0.39       222
+
+avg / total       0.78      0.74      0.67      1325
+
+Confusion Matrix: 
+[[876   0   7]
+ [173  41   6]
+ [165   0  57]]
+
+--------------------------------------
+Decision Tree Main Classification Rate: 0.8709433962264151
+Decision Tree Metrics
+
+             precision    recall  f1-score   support
+
+        0.0       0.93      0.94      0.93       883
+        1.0       0.80      0.77      0.78       220
+        2.0       0.69      0.71      0.70       222
+
+avg / total       0.87      0.87      0.87      1325
+
+Confusion Matrix: 
+[[827  16  40]
+ [ 21 169  30]
+ [ 38  26 158]]
+--------------------------------------

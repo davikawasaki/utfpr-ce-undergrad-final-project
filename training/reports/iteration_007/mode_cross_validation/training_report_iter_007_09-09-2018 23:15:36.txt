@@ -1,0 +1,192 @@
+
+--------------------------------------
+REPORT FROM TRAINING - ITERATION 007
+--------------------------------------
+Algorithms used: logistic_regression decision_tree svm_svc_linear multinomial_nb random-forest stochastic-gradient-descent-log stochastic-gradient-descent-svm 
+--------------------------------------
+
+Database total questions: 4449
+Computer Network total questions: 5483
+Computer Architecture total questions: 4449
+Information Systems total questions: 5483
+Operational System total questions: 1062
+Total questions for each theme after balancing: 1062
+
+--------------------------------------
+Cross-validation mode with k-folds
+--------------------------------------
+Results for Logistic Regression algorithm in cross-validation mode
+--------------------------------------
+Main Classification Rate: 0.7883159936519133
+Metrics:
+
+             precision    recall  f1-score   support
+
+        0.0       0.85      0.89      0.87      1062
+        1.0       0.76      0.80      0.78      1062
+        2.0       0.79      0.80      0.79      1062
+        3.0       0.81      0.72      0.76      1062
+        4.0       0.73      0.73      0.73      1062
+
+avg / total       0.79      0.79      0.79      5310
+
+
+Confusion Matrix:
+[[950  27  22  26  37]
+ [ 52 847  38  70  55]
+ [ 34  41 846  36 105]
+ [ 53 135  26 763  85]
+ [ 29  63 144  46 780]]
+
+Time: 24.8415310383 seconds
+--------------------------------------
+Results for Decision Tree algorithm in cross-validation mode
+--------------------------------------
+Main Classification Rate: 0.7361805678010932
+Metrics:
+
+             precision    recall  f1-score   support
+
+        0.0       0.83      0.82      0.82      1062
+        1.0       0.69      0.73      0.71      1062
+        2.0       0.73      0.75      0.74      1062
+        3.0       0.73      0.73      0.73      1062
+        4.0       0.71      0.66      0.69      1062
+
+avg / total       0.74      0.74      0.74      5310
+
+
+Confusion Matrix:
+[[869  66  45  48  34]
+ [ 53 771  63 106  69]
+ [ 35  83 795  39 110]
+ [ 50 120  41 773  78]
+ [ 38  83 141  94 706]]
+
+Time: 293.5890131 seconds
+--------------------------------------
+Results for SVM SVC Linear algorithm in cross-validation mode
+--------------------------------------
+Main Classification Rate: 0.7990442602715571
+Metrics:
+
+             precision    recall  f1-score   support
+
+        0.0       0.92      0.85      0.88      1062
+        1.0       0.78      0.81      0.80      1062
+        2.0       0.77      0.82      0.79      1062
+        3.0       0.76      0.80      0.78      1062
+        4.0       0.78      0.71      0.74      1062
+
+avg / total       0.80      0.80      0.80      5310
+
+
+Confusion Matrix:
+[[907  28  33  64  30]
+ [ 24 863  47  80  48]
+ [ 21  38 871  47  85]
+ [ 24 118  21 851  48]
+ [ 15  61 162  73 751]]
+
+Time: 13667.1356418 seconds
+--------------------------------------
+Results for Multinomial Naive Bayes algorithm in cross-validation mode
+--------------------------------------
+Main Classification Rate: 0.832202433433257
+Metrics:
+
+             precision    recall  f1-score   support
+
+        0.0       0.90      0.92      0.91      1062
+        1.0       0.81      0.82      0.82      1062
+        2.0       0.83      0.83      0.83      1062
+        3.0       0.85      0.80      0.82      1062
+        4.0       0.77      0.79      0.78      1062
+
+avg / total       0.83      0.83      0.83      5310
+
+
+Confusion Matrix:
+[[977  19  15  23  28]
+ [ 20 876  26  72  68]
+ [ 20  40 879  27  96]
+ [ 33 106  11 850  62]
+ [ 30  44 123  28 837]]
+
+Time: 25.6825349331 seconds
+--------------------------------------
+Results for Random Forest algorithm in cross-validation mode
+--------------------------------------
+Main Classification Rate: 0.5140327984482456
+Metrics:
+
+             precision    recall  f1-score   support
+
+        0.0       0.89      0.59      0.71      1062
+        1.0       0.33      0.89      0.48      1062
+        2.0       0.56      0.50      0.53      1062
+        3.0       0.84      0.31      0.45      1062
+        4.0       0.80      0.29      0.42      1062
+
+avg / total       0.69      0.51      0.52      5310
+
+
+Confusion Matrix:
+[[624 373  45  14   6]
+ [ 13 944  70  24  11]
+ [ 19 458 532   7  46]
+ [ 22 594 110 325  11]
+ [ 20 533 186  18 305]]
+
+Time: 1729.57440901 seconds
+--------------------------------------
+Results for Stochastic Gradient Descent - Logistic Regression algorithm in cross-validation mode
+--------------------------------------
+Main Classification Rate: 0.756850643625463
+Metrics:
+
+             precision    recall  f1-score   support
+
+        0.0       0.73      0.90      0.81      1062
+        1.0       0.74      0.75      0.74      1062
+        2.0       0.80      0.68      0.74      1062
+        3.0       0.76      0.69      0.73      1062
+        4.0       0.71      0.71      0.71      1062
+
+avg / total       0.75      0.75      0.75      5310
+
+
+Confusion Matrix:
+[[953  32  10  28  39]
+ [ 90 801  27  97  47]
+ [ 98  55 724  44 141]
+ [ 91 134  20 737  80]
+ [ 67  67 119  58 751]]
+
+Time: 135.637306929 seconds
+--------------------------------------
+Results for Stochastic Gradient Descent - Linear SVM algorithm in cross-validation mode
+--------------------------------------
+Main Classification Rate: 0.7465297125727386
+Metrics:
+
+             precision    recall  f1-score   support
+
+        0.0       0.79      0.90      0.84      1062
+        1.0       0.75      0.75      0.75      1062
+        2.0       0.82      0.72      0.76      1062
+        3.0       0.72      0.77      0.74      1062
+        4.0       0.77      0.70      0.73      1062
+
+avg / total       0.77      0.77      0.77      5310
+
+
+Confusion Matrix:
+[[959  21  13  39  30]
+ [ 60 793  21 136  52]
+ [ 83  54 761  69  95]
+ [ 52 121  20 819  50]
+ [ 63  63 117  77 742]]
+
+Time: 96.3237061501 seconds
+--------------------------------------
