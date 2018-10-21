@@ -3,6 +3,9 @@
 # First training with database and network questions
 ## BD Total: 4449 questions
 ## RC Total: 5483 questions
+## AC Total: 1062 questions
+## SI Total: 3081 questions
+## SO Total: 2483 questions
 
 import json
 
@@ -21,14 +24,14 @@ smaller_length = 0
 today_date = datetime.datetime.now()
 kfold = 10
 # ml_list = ['logistic_regression', 'decision_tree', 'svm_svc_linear', 'svm_svc_rbf', 'svm_linear_svr ,'multinomial_nb', 'random-forest', 'kneighbors', 'stochastic-gradient-descent-log', 'stochastic-gradient-descent-svm']
-ml_list = ['logistic_regression', 'decision_tree', 'svm_svc_linear', 'multinomial_nb', 'random-forest', 'stochastic-gradient-descent-log', 'stochastic-gradient-descent-svm']
+ml_list = ['random-forest']
 
 print "Starting training..."
 
 # Output variables
-filepath = "reports/training_report_iter_005_"
+filepath = "reports/training_report_iter_008_"
 header = "\n--------------------------------------\n"
-header += "REPORT FROM TRAINING - ITERATION 005\n"
+header += "REPORT FROM TRAINING - ITERATION 008\n"
 header += "--------------------------------------\n"
 header += "Algorithms used: "
 for ml in ml_list:
@@ -37,8 +40,8 @@ header += "\n--------------------------------------\n\n"
 
 # Variables
 db_name = "tcc"
-db_collection_list = ["quest_db_iter_01", "quest_rc_iter_01"]
-collection_label_list = [0, 1]  # 0: db, 1: rc
+db_collection_list = ["quest_db_iter_01", "quest_rc_iter_01", "quest_ac_iter_02", "quest_si_iter_02", "quest_so_iter_02"]
+collection_label_list = [0, 1, 2, 3, 4]  # 0: db, 1: rc, 2: ac, 3: si, 4: so
 tokenizer_config = ['downcase', 'short', 'porter_stem', 'stopwords']
 stoptoken_config = ['number', 'key_base_rules']
 split_testing_percentage = 0.2
@@ -61,6 +64,9 @@ for collection in db_collection_list:
 
 header = header + "Database total questions: " + str(len(theme_question_list_map[db_collection_list[0]])) + "\n"
 header = header + "Computer Network total questions: " + str(len(theme_question_list_map[db_collection_list[1]])) + "\n"
+header = header + "Computer Architecture total questions: " + str(len(theme_question_list_map[db_collection_list[0]])) + "\n"
+header = header + "Information Systems total questions: " + str(len(theme_question_list_map[db_collection_list[1]])) + "\n"
+header = header + "Operational System total questions: " + str(len(theme_question_list_map[db_collection_list[2]])) + "\n"
 
 # Unbalanced themes
 # (N x D+1 matrix - keeping themes together so shuffle more easily later

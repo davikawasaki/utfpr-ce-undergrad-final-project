@@ -66,23 +66,23 @@ header = header + "Operational System total questions: " + str(len(theme_questio
 
 # Unbalanced themes
 # (N x D+1 matrix - keeping themes together so shuffle more easily later
-for collection in db_collection_list:
-    N = N + len(theme_question_list_map[collection])
+# for collection in db_collection_list:
+#     N = N + len(theme_question_list_map[collection])
 
 # Balance themes
 # Random each theme questions reviews and get same quantity from the theme that has more questions
-# smaller_length = len(theme_question_list_map[db_collection_list[0]])
-#
-# for collection in db_collection_list:
-#     actual_len = len(theme_question_list_map[collection])
-#     smaller_length = actual_len if actual_len < smaller_length else smaller_length
-#
-# N = smaller_length * len(collection_label_list)
-# header = header + "Total questions for each theme after balancing: " + str(smaller_length) + "\n\n"
-#
-# for collection in db_collection_list:
-#     np.random.shuffle(theme_question_list_map[collection])
-#     theme_question_list_map[collection] = theme_question_list_map[collection][:smaller_length]
+smaller_length = len(theme_question_list_map[db_collection_list[0]])
+
+for collection in db_collection_list:
+    actual_len = len(theme_question_list_map[collection])
+    smaller_length = actual_len if actual_len < smaller_length else smaller_length
+
+N = smaller_length * len(collection_label_list)
+header = header + "Total questions for each theme after balancing: " + str(smaller_length) + "\n\n"
+
+for collection in db_collection_list:
+    np.random.shuffle(theme_question_list_map[collection])
+    theme_question_list_map[collection] = theme_question_list_map[collection][:smaller_length]
 
 # Iterate questions from each theme, remove extra stoptokens, insert tokens into array and map word index in object
 for collection in db_collection_list:
@@ -120,4 +120,4 @@ for collection in db_collection_list:
     col += 1
 
 # Training with report output
-sklearn_training.train_report(data, split_testing_percentage, kfold, ml_list, filepath, header)
+sklearn_training.train_report(data, split_testing_percentage, kfold, ml_list, filepath, header, collection_label_list)
