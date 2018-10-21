@@ -1,0 +1,35 @@
+
+--------------------------------------
+REPORT FROM TRAINING - ITERATION 005
+--------------------------------------
+Algorithms used: random-forest 
+--------------------------------------
+
+Database total questions: 4449
+Computer Network total questions: 5483
+Total questions for each theme after balancing: 4449
+
+
+--------------------------------------
+Cross-validation mode with k-folds
+--------------------------------------
+Results for Random Forest algorithm in cross-validation mode
+--------------------------------------
+Main Classification Rate: 0.9581890879643689
+Metrics:
+
+             precision    recall  f1-score   support
+
+        0.0       0.96      0.97      0.96      4449
+        1.0       0.97      0.96      0.96      4449
+
+avg / total       0.96      0.96      0.96      8898
+
+
+Confusion Matrix:
+[[4306  143]
+ [ 197 4252]]
+
+Time: 162.681787014
+
+--------------------------------------

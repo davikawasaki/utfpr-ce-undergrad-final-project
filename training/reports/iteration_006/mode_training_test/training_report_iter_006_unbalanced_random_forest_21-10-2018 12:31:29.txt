@@ -1,0 +1,41 @@
+
+--------------------------------------
+REPORT FROM TRAINING - ITERATION 006
+--------------------------------------
+Algorithms used: random-forest 
+--------------------------------------
+
+Computer Architecture total questions: 1062
+Information Systems total questions: 3081
+Operational System total questions: 2483
+
+--------------------------------------
+Normal training/test mode
+--------------------------------------
+Training mode: 80.0/20.0
+Training amount: 5301
+Testing amount: 1325
+
+--------------------------------------
+Results for Random Forest algorithm in normal training/test mode
+--------------------------------------
+Main Classification Rate: 0.8476621417797888
+Metrics:
+
+             precision    recall  f1-score   support
+
+        0.0       0.74      0.63      0.68       209
+        1.0       0.89      0.95      0.92       617
+        2.0       0.83      0.82      0.82       500
+
+avg / total       0.84      0.85      0.84      1326
+
+
+Confusion Matrix:
+[[131  22  56]
+ [  6 584  27]
+ [ 39  52 409]]
+
+Time: 4.33890199661
+
+--------------------------------------
