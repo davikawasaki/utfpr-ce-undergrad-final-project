@@ -25,12 +25,15 @@ from sklearn.model_selection import cross_val_score
 C = 1.0  # SVM regularization parameter
 num_neighbors = 5
 
-def train_report(data, split_test, k_fold, ml_list, filepath, header):
+def train_report(data, split_test, k_fold, ml_list, filepath, header, classes):
     # Shuffle data and create train/test splits
     np.random.shuffle(data)
     # X as data matrix except true label column; Y as true label column
     X = data[:, :-1]
     Y = data[:, -1]
+
+    testing_len = int(round(len(data) * split_test))
+    training_len = int(round(len(data) - testing_len))
 
     # Input data
     Xtrain, Xtest, Ytrain, Ytest = train_test_split(X, Y, test_size=split_test, random_state=0)
@@ -40,10 +43,12 @@ def train_report(data, split_test, k_fold, ml_list, filepath, header):
         'Xtrain': Xtrain,
         'Xtest': Xtest,
         'Ytrain': Ytrain,
-        'Ytest': Ytest
+        'Ytest': Ytest,
+        'data': data,
+        'classes': classes,
+        'training_len': training_len,
+        'testing_len': testing_len
     }
-    testing_len = int(round(len(data) * split_test))
-    training_len = int(round(len(data) - testing_len))
 
     final_results = _training_results(data_dict, split_test, k_fold, ml_list)
     _log_results(filepath, header, final_results, split_test, training_len, testing_len)
@@ -92,11 +97,11 @@ def _training_results(data_dict, split_test, k_fold, list):
 
             elif training_type == 'random-forest':
                 result_dict['name'] = 'Random Forest'
-                model = KNeighborsClassifier(n_neighbors=num_neighbors)
+                model = RandomForestClassifier()
 
             elif training_type == 'kneighbors':
                 result_dict['name'] = 'KNN'
-                model = RandomForestClassifier()
+                model = KNeighborsClassifier(n_neighbors=num_neighbors)
 
             elif training_type == 'stochastic-gradient-descent-log':
                 result_dict['name'] = 'Stochastic Gradient Descent - Logistic Regression'
@@ -126,36 +131,51 @@ def _process_training(data_dict, result_dict, model, split_test, k_fold):
         'time': None
     }
 
+    if result_dict['name'] == 'random-forest':
+        X = data_dict['data']
+        Y = data_dict['classes']
+        Xtrain = X[:-data_dict['testing_len'], ]
+        Ytrain = Y[:-data_dict['testing_len'], ]
+        Xtest = X[-data_dict['testing_len']:, ]
+        Ytest = Y[-data_dict['testing_len']:, ]
+    else:
+        X = data_dict['X']
+        Y = data_dict['Y']
+        Xtrain = data_dict['Xtrain']
+        Ytrain = data_dict['Ytrain']
+        Xtest = data_dict['Xtest']
+        Ytest = data_dict['Ytest']
+
     if split_test is not None:
         print "--- Split test training for " + result_dict['name'] + " starting... ---"
         start = time.time()
 
-        model.fit(data_dict['Xtrain'], data_dict['Ytrain'])
-        result_dict['accuracy'] = model.score(data_dict['Xtest'], data_dict['Ytest'])
+        model.fit(Xtrain, Ytrain)
+        result_dict['accuracy'] = model.score(Xtest, Ytest)
 
-        Ypred = model.predict(data_dict['Xtest'])
-        result_dict['classification_report'] = classification_report(data_dict['Ytest'], Ypred)
-        result_dict['confusion_matrix'] = confusion_matrix(data_dict['Ytest'], Ypred)
-
-        training_results['training_test'] = result_dict
+        Ypred = model.predict(Xtest)
+        result_dict['classification_report'] = classification_report(Ytest, Ypred)
+        result_dict['confusion_matrix'] = confusion_matrix(Ytest, Ypred)
 
         end = time.time()
-        training_results['time'] = (end - start)
-        print "--- Split test training ended for " + result_dict['name'] + " in " + str(training_results['time']) + " ---"
+        result_dict['time'] = (end - start)
+        training_results['training_test'] = result_dict
+
+        print "--- Split test training ended for " + result_dict['name'] + " in " + str(result_dict['time']) + " ---"
     if k_fold is not None:
         print "--- k-fold test training for " + result_dict['name'] + " starting... ---"
         start = time.time()
-        result_dict['accuracy'] = cross_val_score(model, data_dict['X'], data_dict['Y'], cv=k_fold).mean()
+        result_dict['accuracy'] = cross_val_score(model, X, Y, cv=k_fold).mean()
 
-        Ypred = cross_val_predict(model, X=data_dict['X'], y=data_dict['Y'], verbose=1, cv=k_fold)
-        result_dict['classification_report'] = classification_report(data_dict['Y'], Ypred)
-        result_dict['confusion_matrix'] = confusion_matrix(data_dict['Y'], Ypred)
-
-        training_results['cross_validation'] = result_dict
+        Ypred = cross_val_predict(model, X=X, y=Y, verbose=1, cv=k_fold)
+        result_dict['classification_report'] = classification_report(Y, Ypred)
+        result_dict['confusion_matrix'] = confusion_matrix(Y, Ypred)
 
         end = time.time()
-        training_results['time'] = (end - start)
-        print "--- k-fold test training ended for " + result_dict['name'] + " in " + str(training_results['time']) + " ---"
+        result_dict['time'] = (end - start)
+        training_results['cross_validation'] = result_dict
+
+        print "--- k-fold test training ended for " + result_dict['name'] + " in " + str(result_dict['time']) + " ---"
 
     return training_results
 
@@ -181,7 +201,7 @@ def _log_results(filepath, header, final_results, split_test, training_len, test
             sout += item_dict['classification_report']
             sout += "\n\nConfusion Matrix:\n"
             sout += np.array_str(item_dict['confusion_matrix'])
-            # sout = sout + "\n\nTime: " + item_dict['time'] + "\n"
+            sout = sout + "\n\nTime: " + str(item_dict['time']) + "\n"
             sout += "\n--------------------------------------\n"
 
     if len(final_results['cross_validation']) > 0:
@@ -197,7 +217,7 @@ def _log_results(filepath, header, final_results, split_test, training_len, test
             sout += item_dict['classification_report']
             sout += "\n\nConfusion Matrix:\n"
             sout += np.array_str(item_dict['confusion_matrix'])
-            # sout = sout + "\n\nTime: " + item_dict['time'] + "\n"
+            sout = sout + "\n\nTime: " + str(item_dict['time']) + "\n"
             sout += "\n--------------------------------------\n"
 
     fname = filepath + datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S") + ".txt"
