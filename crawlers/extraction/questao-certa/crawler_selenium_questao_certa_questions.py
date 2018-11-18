@@ -1,18 +1,31 @@
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 
+"""Crawler to extract IT questions from Questao Certa website.
+
+Project: questao_certa_it_questions
+Framework used: Selenium
+
+todo: accept Auth and URL JSON config file
+outputs: compiled JSON to output folder
+
+"""
+
 import re
 import json
 import time
 import traceback
-
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
+# DON'T FORGET TO CHANGE YOUR CREDENTIALS IN HERE
 auth = {
-    'email': 'd_s_m_k_@hotmail.com',
-    'password': '123456'
+    'email': '<INSERT YOUR EMAIL>',
+    'password': '<INSERT YOUR PASSWORD>'
 }
+
+# IF YOUR CHROME DRIVER IS IN A DIFFERENT FOLDER, CHANGE HERE
+chrome_driver_path = "/usr/bin/chromedriver"
 
 url = 'https://www.questaocerta.com.br/'
 url_disciplina = url + 'questoes/disciplina/'
@@ -23,15 +36,18 @@ error_list = []
 error_count = 0
 
 options = webdriver.ChromeOptions()
-#options.add_argument('--ignore-certificate-errors')
-#options.add_argument("--test-type")
-#options.binary_location = "/usr/bin/chromedriver"
-#options.add_argument("headless")
-driver = webdriver.Chrome(executable_path="/usr/bin/chromedriver", chrome_options=options)
+# options.add_argument('--ignore-certificate-errors')
+# options.add_argument("--test-type")
+# options.binary_location = chrome_driver_path
+# options.add_argument("headless")
+driver = webdriver.Chrome(executable_path=chrome_driver_path, chrome_options=options)
 
-#driver = webdriver.Chrome(executable_path="/usr/bin/chromedriver")
-#driver = webdriver.PhantomJS()
+# driver = webdriver.Chrome(executable_path=chrome_driver_path)
+# driver = webdriver.PhantomJS()
 
+##
+# 1. LOGIN PAGE
+##
 print '--- Starting extraction... ---'
 driver.get(url_login)
 
@@ -41,10 +57,16 @@ driver.find_element_by_id('senhaLogin').send_keys(auth['password'], Keys.ENTER)
 
 driver.get(url_questions)
 
+##
+# 2. GET SUBJECT ELEMENTS
+##
 disciplina_select = driver.find_element_by_id('filtro_disciplina')
 disciplina_list = disciplina_select.find_elements_by_tag_name("option")
 disciplina_ti_url_list = []
 
+##
+# 3. EXTRACT THEMES
+##
 print '--- Themes extraction... ---'
 for disciplina in disciplina_list:
     if disciplina.text != "Disciplina":
@@ -53,8 +75,16 @@ for disciplina in disciplina_list:
                 print '--- Theme: ' + disciplina.get_attribute('value') + '---'
                 disciplina_ti_url_list.append(url_disciplina + disciplina.get_attribute('value'))
 
-skip = 9 # Engenharia de Software (TI) - page 216 (error)
+##
+# 4. SKIP PAGES
+# Maneuver to skip pages if necessary. If not, just let it be 0.
+##
+skip = 0
+# skip = 9 # Engenharia de Software (TI) - page 216 (error)
 
+##
+# 5. START EXTRACTION CHECKING URL REGEX FOR TI THEME PAGES
+##
 for theme_url in disciplina_ti_url_list:
     if skip > 0:
         skip -= 1
@@ -109,7 +139,9 @@ for theme_url in disciplina_ti_url_list:
     #     # clear extraction list for each batch
     #     extraction['ext_quest_list'] = []
 
-    # loop against each page
+    ##
+    # 5.1. LOOP THROUGH EACH PAGE FROM THEME
+    ##
     for j in range(int(total_pages)):
         # for j in range(start, end):
         print '--- Page ' + str(j) + ' ---'
@@ -118,10 +150,17 @@ for theme_url in disciplina_ti_url_list:
         for link in more_details_questions:
             link.click()
 
-        driver.execute_script("for(var list=document.querySelectorAll(\"input[type='radio']\"),i=0;i<list.length;i++)list[i].click();list=document.querySelectorAll(\"a[title='Responder']\");for(i=0;i<list.length;i++)list[i].click();")
+        ##
+        # 5.1.1. ANSWER QUESTIONS TO GET THE RIGHT ANSWERS
+        ##
+        driver.execute_script("for(var list=document.querySelectorAll(\"input[type='radio']\"),i=0;i<list.length;i++)"
+                              "list[i].click();list=document.querySelectorAll(\"a[title='Responder']\");"
+                              "for(i=0;i<list.length;i++)list[i].click();")
         time.sleep(1)
 
-        # iterating each question
+        ##
+        # 5.1.2. LOOP THROUGH EACH QUESTION
+        ##
         question_list = driver.find_elements_by_xpath("//article[@class='questao']")
         for question_count in range(len(question_list)):
             ext_quest = {
@@ -131,7 +170,9 @@ for theme_url in disciplina_ti_url_list:
                 'subthemes': []
             }
 
-            # getting header test name and subthemes
+            ##
+            # 5.1.2.1. GET HEADER TEST NAME AND SUBTHEMES
+            ##
             header_text = question_list[question_count].find_element_by_xpath(".//header/div[@class='questao-id']").text
 
             test_name = ''
@@ -166,19 +207,27 @@ for theme_url in disciplina_ti_url_list:
                 print '[ERROR] Erro adicionado a lista de erros! Ignorando a questão...'
                 continue
 
-            # getting body
+            ##
+            # 5.1.2.2. GET QUESTION BODY
+            ##
             question_middle = question_list[question_count].find_element_by_xpath(".//div[@class='questao-miolo']")
-            # check questions to get correct answer
+
+            ##
+            # 5.1.2.3. CHECK QUESTIONS TO GET CORRECT ANSWER
+            ##
             alternatives_question = question_middle.find_element_by_xpath(".//div[@class='questao-alternativas']")
             # alternatives_question.find_element_by_xpath(".//ul/li[1]/div[@class='radio']/span/input").click()
             # alternatives_question.find_element_by_xpath(".//a").click()
-            #
+
             green_alert = alternatives_question.find_element_by_xpath(".//div[@class='alerta-verde']")
             red_alert = alternatives_question.find_element_by_xpath(".//div[@class='alerta-vermelho']")
-            #
-            # assert green_alert.get_attribute("style") == "display: none;" and red_alert.get_attribute("style") == "display: none;"
 
-            # get question main text
+            # assert green_alert.get_attribute("style") == "display: none;" and + \
+            #     red_alert.get_attribute("style") == "display: none;"
+
+            ##
+            # 5.1.2.4. GET QUESTION MAIN TEXT
+            ##
             question_main_text_block = question_middle.find_element_by_xpath(".//div[@class='questao-enunciado']")
             question_text_p_list = question_main_text_block.find_elements_by_tag_name('p')
             question_text_img_list = question_main_text_block.find_elements_by_tag_name('img')
@@ -196,10 +245,12 @@ for theme_url in disciplina_ti_url_list:
                 })
                 print '[ERROR] Erro adicionado a lista de erros! Ignorando a questão...'
                 continue
-            #for p_count in range(len(question_text_p_list)):
+            # for p_count in range(len(question_text_p_list)):
             #    ext_quest['question_text'] = ext_quest['question_text'].join(question_text_p_list[p_count].text)
 
-            # get question alternatives text
+            ##
+            # 5.1.2.5. GET QUESTION ALTERNATIVES' TEXTS
+            ##
             question_alternatives_li_label_list = alternatives_question.find_elements_by_tag_name('label')
             for label_count in range(len(question_alternatives_li_label_list)):
                 ext_quest_option = {
@@ -209,14 +260,16 @@ for theme_url in disciplina_ti_url_list:
 
                 ext_quest['options'].append(ext_quest_option)
 
-            # check right alternative from question
+            ##
+            # 5.1.2.6. CHECK RIGHT ALTERNATIVE FROM QUESTION
+            ##
             if red_alert.get_attribute("style") == "display: none;":
                 ext_quest['options'][-1]['correct'] = True
             else:
                 alternatives_question = question_middle.find_element_by_xpath(".//div[@class='questao-alternativas']")
                 red_alert = alternatives_question.find_element_by_xpath(".//div[@class='alerta-vermelho']")
                 alternative_html = red_alert.get_attribute('innerHTML')
-                #print alternative_html
+                # print alternative_html
                 right_question = ''
                 true_false_question = False
 
@@ -242,19 +295,26 @@ for theme_url in disciplina_ti_url_list:
                 else:
                     ext_quest['options'][0]['correct'] = True
 
-
             extraction['ext_quest_list'].append(ext_quest)
             count += 1
 
+    ##
+    # 5.2. OUTPUT EXTRACTION OBJECT WITH QUESTIONS FROM THEME TO JSON FILE
+    ##
     print 'outputing...'
     with open('../output/questao-certa-crawler-' + theme_name + '-resultados.json', 'w') as outfile:
-    # with open('../output/questao-certa-crawler-' + extraction['theme'] + '-resultados-batch-' + str(i) + '.json', 'w') as outfile:
+        # with open('../output/questao-certa-crawler-' + extraction['theme'] + '-resultados-batch-'
+        #           + str(i) + '.json', 'w') as outfile:
         json.dump(extraction, outfile)
 
+    ##
+    # 5.3. OUTPUT ERROR LIST TO JSON FILE
+    ##
     if len(error_list) > 0:
         print 'outputing errors...'
         with open('../errors/questao-certa-crawler-' + theme_name + '-errors.json', 'w') as outfile:
-            # with open('../output/questao-certa-crawler-' + extraction['theme'] + '-resultados-batch-' + str(i) + '.json', 'w') as outfile:
+            # with open('../output/questao-certa-crawler-' + extraction['theme'] + '-resultados-batch-'
+            #           + str(i) + '.json', 'w') as outfile:
             json.dump(error_list, outfile)
 
     # print 'batch ' + str(i) + ' finished!'
@@ -268,4 +328,5 @@ for theme_url in disciplina_ti_url_list:
 
     # print 'extraction successful for ' + str(extraction_iterations) + ' batches! Check output folder.'
     print '--- Extraction successful for ' + str(count) + ' questions and unsuccessful for ' + str(error_count) + ' questions from theme ' + theme_name + '! Check output/errors folder. ---'
+
 driver.close()
