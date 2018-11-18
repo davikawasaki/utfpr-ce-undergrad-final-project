@@ -25,7 +25,7 @@ The delay on curricular education models have been discussed and questioned. The
 
 ## Overview
 
-Exploring the educational technology slope, the adaptive learning aims to improve individualized learning through identification of moments and factors which each student has a easier way of learn (LORENZONI, 2016). This thesis' general objective was to work within part of the customized tests and exercises elaboration according to step (a) on the following figure:
+Exploring the educational technology slope, the adaptive learning aims to improve individualized learning through identification of moments and factors which each student has a easier way of learn. This thesis' general objective was to work within part of the customized tests and exercises elaboration according to step (a) on the following figure:
 
 ![Adaptive Learning Difference Approach](img/adaptive_learning_difference_approach.jpg)
 
@@ -276,7 +276,7 @@ The algorithms results on the last iteration for the kfold split type can be see
 
 ![Algorithms results for iteration 3 in kfold split](img/results_balanced_training_kfold_iteration_3.png)
 
-To see more details of the work done and future ideas to improve the main objective, check the developed [document thesis](docs/computing_exam_questions_classification_using_natural_language_processing_pt-br) (only in Portuguese).
+To see more details of the work done and future ideas to improve the main objective, check the developed [document thesis](docs/computing_exam_questions_classification_using_natural_language_processing_pt-br.pdf) (only in Portuguese).
 
 ## Hardware Specifications
 
