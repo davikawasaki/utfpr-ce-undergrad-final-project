@@ -1,1 +1,177 @@
-[{"questions_with_image": 276, "collection_name": "redes_de_computadores", "theme": "Redes de Computadores", "file": "../crawlers/output/questao-certa/questao-certa-crawler-redes-de-computadores-resultados", "total_questions": 2615}, {"questions_with_image": 244, "collection_name": "redes_de_computadores", "theme": "Redes de Computadores", "file": "../crawlers/output/rota-dos-concursos/rota-dos-concursos-crawler-redes-de-computadores-resultados", "total_questions": 2868}, {"questions_with_image": 100, "collection_name": "sistemas_operacionais", "theme": "Sistemas Operacionais", "file": "../crawlers/output/questao-certa/questao-certa-crawler-sistemas-operacionais-resultados", "total_questions": 1015}, {"questions_with_image": 142, "collection_name": "sistemas_operacionais", "theme": "Sistemas Operacionais", "file": "../crawlers/output/rota-dos-concursos/rota-dos-concursos-crawler-sistemas-operacionais-resultados", "total_questions": 1468}, {"questions_with_image": 183, "collection_name": "sistemas_de_informacao", "theme": "Sistemas de informa\u00e7\u00e3o", "file": "../crawlers/output/questao-certa/questao-certa-crawler-sistemas-de-informacao-resultados", "total_questions": 1040}, {"questions_with_image": 119, "collection_name": "algoritmos_e_estrutura_de_dados", "theme": "Algoritmos e Estrutura de Dados", "file": "../crawlers/output/questao-certa/questao-certa-crawler-algoritmos-e-estrutura-de-dados-resultados", "total_questions": 425}, {"questions_with_image": 175, "collection_name": "governanca_de_ti", "theme": "Governanca de TI", "file": "../crawlers/output/questao-certa/questao-certa-crawler-governanca-de-ti-resultados", "total_questions": 1345}, {"questions_with_image": 219, "collection_name": "engenharia_de_software", "theme": "Engenharia de Software", "file": "../crawlers/output/questao-certa/questao-certa-crawler-engenharia-de-software-resultados", "total_questions": 1610}, {"questions_with_image": 79, "collection_name": "seguranca_da_informacao", "theme": "Seguran\u00e7a da Informa\u00e7\u00e3o", "file": "../crawlers/output/questao-certa/questao-certa-crawler-seguranca-da-informacao-resultados", "total_questions": 1195}, {"questions_with_image": 133, "collection_name": "seguranca_da_informacao", "theme": "Seguran\u00e7a da Informa\u00e7\u00e3o", "file": "../crawlers/output/rota-dos-concursos/rota-dos-concursos-crawler-seguranca-da-informacao-resultados", "total_questions": 1886}, {"questions_with_image": 378, "collection_name": "banco_de_dados", "theme": "Banco de Dados", "file": "../crawlers/output/questao-certa/questao-certa-crawler-banco-de-dados-resultados", "total_questions": 2115}, {"questions_with_image": 454, "collection_name": "banco_de_dados", "theme": "Banco de Dados", "file": "../crawlers/output/rota-dos-concursos/rota-dos-concursos-crawler-banco-de-dados-resultados", "total_questions": 2334}, {"questions_with_image": 464, "collection_name": "programacao", "theme": "Programa\u00e7\u00e3o", "file": "../crawlers/output/questao-certa/questao-certa-crawler-programacao-resultados", "total_questions": 1555}, {"questions_with_image": 29, "collection_name": "arquitetura_de_software", "theme": "Arquitetura de Software", "file": "../crawlers/output/questao-certa/questao-certa-crawler-arquitetura-de-software-resultados", "total_questions": 355}, {"questions_with_image": 47, "collection_name": "arquitetura_de_computadores", "theme": "Arquitetura de Computadores", "file": "../crawlers/output/questao-certa/questao-certa-crawler-arquitetura-de-computadores-resultados", "total_questions": 670}, {"questions_with_image": 31, "collection_name": "arquitetura_de_computadores", "theme": "Arquitetura de Computadores", "file": "../crawlers/output/rota-dos-concursos/rota-dos-concursos-crawler-arquitetura-de-computadores-resultados", "total_questions": 392}, {"questions_with_image": 29, "collection_name": "servidor", "theme": "Servidor", "file": "../crawlers/output/rota-dos-concursos/rota-dos-concursos-crawler-servidor-resultados", "total_questions": 290}, {"questions_with_image": 101, "collection_name": "gestao_de_ti", "theme": "Gest\u00e3o de TI", "file": "../crawlers/output/rota-dos-concursos/rota-dos-concursos-crawler-gestao-de-ti-resultados", "total_questions": 1352}, {"questions_with_image": 2, "collection_name": "sistema_de_arquivos", "theme": "Sistema de Arquivos", "file": "../crawlers/output/rota-dos-concursos/rota-dos-concursos-crawler-sistema-de-arquivos-resultados", "total_questions": 62}, {"questions_with_image": 16, "collection_name": "arquiteturas", "theme": "Arquiteturas", "file": "../crawlers/output/rota-dos-concursos/rota-dos-concursos-crawler-arquiteturas-resultados", "total_questions": 272}, {"questions_with_image": 483, "collection_name": "software", "theme": "Software", "file": "../crawlers/output/rota-dos-concursos/rota-dos-concursos-crawler-software-resultados", "total_questions": 2217}, {"questions_with_image": 14, "collection_name": "web_design_computacao_grafica", "theme": "Web Designer/Computa\u00e7\u00e3o Gr\u00e1fica", "file": "../crawlers/output/rota-dos-concursos/rota-dos-concursos-crawler-web-design-computacao-grafica-resultados", "total_questions": 160}, {"questions_with_image": 94, "collection_name": "aspectos_gerais", "theme": "Aspectos Gerais", "file": "../crawlers/output/rota-dos-concursos/rota-dos-concursos-crawler-aspectos-gerais-resultados", "total_questions": 370}, {"questions_with_image": 63, "collection_name": "sistemas_de_apoio_a_decisao", "theme": "Sistemas de Apoio \u00e0 Decis\u00e3o", "file": "../crawlers/output/rota-dos-concursos/rota-dos-concursos-crawler-sistemas-de-apoio-a-decisao-resultados", "total_questions": 704}, {"questions_with_image": 5, "collection_name": "virtualizacao", "theme": "Virtualiza\u00e7\u00e3o", "file": "../crawlers/output/rota-dos-concursos/rota-dos-concursos-crawler-virtualizacao-resultados", "total_questions": 160}]
+[
+    {
+        "questions_with_image": 276,
+        "collection_name": "redes_de_computadores",
+        "theme": "Redes de Computadores",
+        "file": "../crawlers/output/questao-certa/questao-certa-crawler-redes-de-computadores-resultados",
+        "total_questions": 2615
+    },
+    {
+        "questions_with_image": 244,
+        "collection_name": "redes_de_computadores",
+        "theme": "Redes de Computadores",
+        "file": "../crawlers/output/rota-dos-concursos/rota-dos-concursos-crawler-redes-de-computadores-resultados",
+        "total_questions": 2868
+    },
+    {
+        "questions_with_image": 100,
+        "collection_name": "sistemas_operacionais",
+        "theme": "Sistemas Operacionais",
+        "file": "../crawlers/output/questao-certa/questao-certa-crawler-sistemas-operacionais-resultados",
+        "total_questions": 1015
+    },
+    {
+        "questions_with_image": 142,
+        "collection_name": "sistemas_operacionais",
+        "theme": "Sistemas Operacionais",
+        "file": "../crawlers/output/rota-dos-concursos/rota-dos-concursos-crawler-sistemas-operacionais-resultados",
+        "total_questions": 1468
+    },
+    {
+        "questions_with_image": 183,
+        "collection_name": "sistemas_de_informacao",
+        "theme": "Sistemas de informação",
+        "file": "../crawlers/output/questao-certa/questao-certa-crawler-sistemas-de-informacao-resultados",
+        "total_questions": 1040
+    },
+    {
+        "questions_with_image": 119,
+        "collection_name": "algoritmos_e_estrutura_de_dados",
+        "theme": "Algoritmos e Estrutura de Dados",
+        "file": "../crawlers/output/questao-certa/questao-certa-crawler-algoritmos-e-estrutura-de-dados-resultados",
+        "total_questions": 425
+    },
+    {
+        "questions_with_image": 175,
+        "collection_name": "governanca_de_ti",
+        "theme": "Governanca de TI",
+        "file": "../crawlers/output/questao-certa/questao-certa-crawler-governanca-de-ti-resultados",
+        "total_questions": 1345
+    },
+    {
+        "questions_with_image": 219,
+        "collection_name": "engenharia_de_software",
+        "theme": "Engenharia de Software",
+        "file": "../crawlers/output/questao-certa/questao-certa-crawler-engenharia-de-software-resultados",
+        "total_questions": 1610
+    },
+    {
+        "questions_with_image": 79,
+        "collection_name": "seguranca_da_informacao",
+        "theme": "Segurança da Informação",
+        "file": "../crawlers/output/questao-certa/questao-certa-crawler-seguranca-da-informacao-resultados",
+        "total_questions": 1195
+    },
+    {
+        "questions_with_image": 133,
+        "collection_name": "seguranca_da_informacao",
+        "theme": "Segurança da Informação",
+        "file": "../crawlers/output/rota-dos-concursos/rota-dos-concursos-crawler-seguranca-da-informacao-resultados",
+        "total_questions": 1886
+    },
+    {
+        "questions_with_image": 378,
+        "collection_name": "banco_de_dados",
+        "theme": "Banco de Dados",
+        "file": "../crawlers/output/questao-certa/questao-certa-crawler-banco-de-dados-resultados",
+        "total_questions": 2115
+    },
+    {
+        "questions_with_image": 454,
+        "collection_name": "banco_de_dados",
+        "theme": "Banco de Dados",
+        "file": "../crawlers/output/rota-dos-concursos/rota-dos-concursos-crawler-banco-de-dados-resultados",
+        "total_questions": 2334
+    },
+    {
+        "questions_with_image": 464,
+        "collection_name": "programacao",
+        "theme": "Programação",
+        "file": "../crawlers/output/questao-certa/questao-certa-crawler-programacao-resultados",
+        "total_questions": 1555
+    },
+    {
+        "questions_with_image": 29,
+        "collection_name": "arquitetura_de_software",
+        "theme": "Arquitetura de Software",
+        "file": "../crawlers/output/questao-certa/questao-certa-crawler-arquitetura-de-software-resultados",
+        "total_questions": 355
+    },
+    {
+        "questions_with_image": 47,
+        "collection_name": "arquitetura_de_computadores",
+        "theme": "Arquitetura de Computadores",
+        "file": "../crawlers/output/questao-certa/questao-certa-crawler-arquitetura-de-computadores-resultados",
+        "total_questions": 670
+    },
+    {
+        "questions_with_image": 31,
+        "collection_name": "arquitetura_de_computadores",
+        "theme": "Arquitetura de Computadores",
+        "file": "../crawlers/output/rota-dos-concursos/rota-dos-concursos-crawler-arquitetura-de-computadores-resultados",
+        "total_questions": 392
+    },
+    {
+        "questions_with_image": 29,
+        "collection_name": "servidor",
+        "theme": "Servidor",
+        "file": "../crawlers/output/rota-dos-concursos/rota-dos-concursos-crawler-servidor-resultados",
+        "total_questions": 290
+    },
+    {
+        "questions_with_image": 101,
+        "collection_name": "gestao_de_ti",
+        "theme": "Gestão de TI",
+        "file": "../crawlers/output/rota-dos-concursos/rota-dos-concursos-crawler-gestao-de-ti-resultados",
+        "total_questions": 1352
+    },
+    {
+        "questions_with_image": 2,
+        "collection_name": "sistema_de_arquivos",
+        "theme": "Sistema de Arquivos",
+        "file": "../crawlers/output/rota-dos-concursos/rota-dos-concursos-crawler-sistema-de-arquivos-resultados",
+        "total_questions": 62
+    },
+    {
+        "questions_with_image": 16,
+        "collection_name": "arquiteturas",
+        "theme": "Arquiteturas",
+        "file": "../crawlers/output/rota-dos-concursos/rota-dos-concursos-crawler-arquiteturas-resultados",
+        "total_questions": 272
+    },
+    {
+        "questions_with_image": 483,
+        "collection_name": "software",
+        "theme": "Software",
+        "file": "../crawlers/output/rota-dos-concursos/rota-dos-concursos-crawler-software-resultados",
+        "total_questions": 2217
+    },
+    {
+        "questions_with_image": 14,
+        "collection_name": "web_design_computacao_grafica",
+        "theme": "Web Designer/Computação Gráfica",
+        "file": "../crawlers/output/rota-dos-concursos/rota-dos-concursos-crawler-web-design-computacao-grafica-resultados",
+        "total_questions": 160
+    },
+    {
+        "questions_with_image": 94,
+        "collection_name": "aspectos_gerais",
+        "theme": "Aspectos Gerais",
+        "file": "../crawlers/output/rota-dos-concursos/rota-dos-concursos-crawler-aspectos-gerais-resultados",
+        "total_questions": 370
+    },
+    {
+        "questions_with_image": 63,
+        "collection_name": "sistemas_de_apoio_a_decisao",
+        "theme": "Sistemas de Apoio à Decisão",
+        "file": "../crawlers/output/rota-dos-concursos/rota-dos-concursos-crawler-sistemas-de-apoio-a-decisao-resultados",
+        "total_questions": 704
+    },
+    {
+        "questions_with_image": 5,
+        "collection_name": "virtualizacao",
+        "theme": "Virtualização",
+        "file": "../crawlers/output/rota-dos-concursos/rota-dos-concursos-crawler-virtualizacao-resultados",
+        "total_questions": 160
+    }
+]
