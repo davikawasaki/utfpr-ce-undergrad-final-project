@@ -1,3 +1,8 @@
+.idea/
+data/
+crawlers/data/
+crawlers/extraction/*/data/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
