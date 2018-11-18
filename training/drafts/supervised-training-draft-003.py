@@ -7,8 +7,8 @@
 import json
 
 import numpy as np
-import training.nlp_snippets as NLPSP
-import training.misc_snippets as MSCSP
+import training.snippets.nlp_snippets as NLPSP
+import training.snippets.misc_snippets as MSCSP
 import datetime
 
 from sklearn.linear_model import LogisticRegression
@@ -35,7 +35,7 @@ db_collection_list = ["quest_db_iter_01", "quest_rc_iter_01"]
 collection_label_list = [0, 1]  # 0: db, 1: rc
 tokenizer_config = ['downcase', 'short', 'porter_stem', 'stopwords']
 stoptoken_config = ['number', 'key_base_rules']
-split_testing_percentage = 0.2
+split_test = 0.2
 
 # Setting base for matrix X with index dictionary and token arrays
 word_index_map = {}
@@ -108,10 +108,10 @@ for collection in db_collection_list:
         i += 1
     col += 1
 
-testing_len = int(round(len(data) * split_testing_percentage))
+testing_len = int(round(len(data) * split_test))
 training_len = int(round(len(data) - testing_len))
 
-sout = sout + "Training mode: " + str(100 - split_testing_percentage * 100) + "/" + str(split_testing_percentage * 100) + "\n"
+sout = sout + "Training mode: " + str(100 - split_test * 100) + "/" + str(split_test * 100) + "\n"
 sout = sout + "Training amount: " + str(training_len) + "\n"
 sout = sout + "Testing amount: " + str(testing_len) + "\n\n"
 
