@@ -1,0 +1,38 @@
+
+--------------------------------------
+REPORT FROM TRAINING - ITERATION 002
+--------------------------------------
+Algorithms used: random-forest 
+--------------------------------------
+
+Computer Architecture total questions: 1062
+Information Systems total questions: 3081
+Operational System total questions: 2483
+Total questions for each theme after balancing: 1062
+
+
+--------------------------------------
+Cross-validation mode with k-folds
+--------------------------------------
+Results for Random Forest algorithm in cross-validation mode
+--------------------------------------
+Main Classification Rate: 0.8427496620231588
+Metrics:
+
+             precision    recall  f1-score   support
+
+        0.0       0.79      0.87      0.83      1062
+        1.0       0.90      0.88      0.89      1062
+        2.0       0.84      0.77      0.80      1062
+
+avg / total       0.84      0.84      0.84      3186
+
+
+Confusion Matrix:
+[[927  36  99]
+ [ 68 938  56]
+ [172  73 817]]
+
+Time: 31.7665319443
+
+--------------------------------------

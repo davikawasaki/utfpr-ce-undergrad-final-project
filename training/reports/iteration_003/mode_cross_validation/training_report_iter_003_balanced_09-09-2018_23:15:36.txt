@@ -1,6 +1,6 @@
 
 --------------------------------------
-REPORT FROM TRAINING - ITERATION 007
+REPORT FROM TRAINING - ITERATION 003
 --------------------------------------
 Algorithms used: logistic_regression decision_tree svm_svc_linear multinomial_nb random-forest stochastic-gradient-descent-log stochastic-gradient-descent-svm 
 --------------------------------------

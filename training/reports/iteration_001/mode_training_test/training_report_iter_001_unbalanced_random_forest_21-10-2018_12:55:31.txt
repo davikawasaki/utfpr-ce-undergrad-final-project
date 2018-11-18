@@ -1,0 +1,38 @@
+
+--------------------------------------
+REPORT FROM TRAINING - ITERATION 001
+--------------------------------------
+Algorithms used: random-forest 
+--------------------------------------
+
+Database total questions: 4449
+Computer Network total questions: 5483
+
+--------------------------------------
+Normal training/test mode
+--------------------------------------
+Training mode: 80.0/20.0
+Training amount: 7946
+Testing amount: 1986
+
+--------------------------------------
+Results for Random Forest algorithm in normal training/test mode
+--------------------------------------
+Main Classification Rate: 0.9602415702063413
+Metrics:
+
+             precision    recall  f1-score   support
+
+        0.0       0.96      0.95      0.96       909
+        1.0       0.96      0.97      0.96      1078
+
+avg / total       0.96      0.96      0.96      1987
+
+
+Confusion Matrix:
+[[ 867   42]
+ [  37 1041]]
+
+Time: 6.54474210739
+
+--------------------------------------
