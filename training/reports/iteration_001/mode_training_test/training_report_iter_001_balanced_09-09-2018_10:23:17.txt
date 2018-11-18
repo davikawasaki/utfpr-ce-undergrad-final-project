@@ -1,0 +1,152 @@
+
+--------------------------------------
+REPORT FROM TRAINING - ITERATION 001
+--------------------------------------
+Algorithms used: logistic_regression decision_tree svm_svc_linear multinomial_nb random-forest stochastic-gradient-descent-log stochastic-gradient-descent-svm 
+--------------------------------------
+
+Database total questions: 4449
+Computer Network total questions: 5483
+Total questions for each theme after balancing: 4449
+
+--------------------------------------
+Normal training/test mode
+--------------------------------------
+Training mode: 80.0/20.0
+Training amount: 7118
+Testing amount: 1780
+
+--------------------------------------
+Results for Logistic Regression algorithm in normal training/test mode
+--------------------------------------
+Main Classification Rate: 0.9584269662921349
+Metrics:
+
+             precision    recall  f1-score   support
+
+        0.0       0.97      0.95      0.96       900
+        1.0       0.95      0.97      0.96       880
+
+avg / total       0.96      0.96      0.96      1780
+
+
+Confusion Matrix:
+[[856  44]
+ [ 30 850]]
+
+Time: 0.36413693428 seconds
+--------------------------------------
+Results for Decision Tree algorithm in normal training/test mode
+--------------------------------------
+Main Classification Rate: 0.952808988764045
+Metrics:
+
+             precision    recall  f1-score   support
+
+        0.0       0.96      0.95      0.95       900
+        1.0       0.95      0.96      0.95       880
+
+avg / total       0.95      0.95      0.95      1780
+
+
+Confusion Matrix:
+[[855  45]
+ [ 39 841]]
+
+Time: 28.8476920128 seconds
+--------------------------------------
+Results for SVM SVC Linear algorithm in normal training/test mode
+--------------------------------------
+Main Classification Rate: 0.9646067415730337
+Metrics:
+
+             precision    recall  f1-score   support
+
+        0.0       0.97      0.96      0.96       900
+        1.0       0.96      0.97      0.96       880
+
+avg / total       0.96      0.96      0.96      1780
+
+
+Confusion Matrix:
+[[863  37]
+ [ 26 854]]
+
+Time: 815.495481968 seconds
+--------------------------------------
+Results for Multinomial Naive Bayes algorithm in normal training/test mode
+--------------------------------------
+Main Classification Rate: 0.9707865168539326
+Metrics:
+
+             precision    recall  f1-score   support
+
+        0.0       0.97      0.97      0.97       900
+        1.0       0.97      0.97      0.97       880
+
+avg / total       0.97      0.97      0.97      1780
+
+
+Confusion Matrix:
+[[872  28]
+ [ 24 856]]
+
+Time: 0.642721176147 seconds
+--------------------------------------
+Results for Random Forest algorithm in normal training/test mode
+--------------------------------------
+Main Classification Rate: 0.8168539325842696
+Metrics:
+
+             precision    recall  f1-score   support
+
+        0.0       0.98      0.65      0.78       900
+        1.0       0.73      0.99      0.84       880
+
+avg / total       0.86      0.82      0.81      1780
+
+
+Confusion Matrix:
+[[585 315]
+ [ 11 869]]
+
+Time: 758.935747862 seconds
+--------------------------------------
+Results for Stochastic Gradient Descent - Logistic Regression algorithm in normal training/test mode
+--------------------------------------
+Main Classification Rate: 0.9376404494382022
+Metrics:
+
+             precision    recall  f1-score   support
+
+        0.0       0.98      0.89      0.94       900
+        1.0       0.90      0.98      0.94       880
+
+avg / total       0.94      0.94      0.94      1780
+
+
+Confusion Matrix:
+[[804  96]
+ [ 15 865]]
+
+Time: 2.05287098885 seconds
+--------------------------------------
+Results for Stochastic Gradient Descent - Linear SVM algorithm in normal training/test mode
+--------------------------------------
+Main Classification Rate: 0.9561797752808989
+Metrics:
+
+             precision    recall  f1-score   support
+
+        0.0       0.94      0.98      0.96       900
+        1.0       0.97      0.94      0.95       880
+
+avg / total       0.96      0.96      0.96      1780
+
+
+Confusion Matrix:
+[[878  22]
+ [ 56 824]]
+
+Time: 1.43145704269 seconds
+--------------------------------------

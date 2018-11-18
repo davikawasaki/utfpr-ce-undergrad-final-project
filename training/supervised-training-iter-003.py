@@ -3,6 +3,9 @@
 # First training with database and network questions
 ## BD Total: 4449 questions
 ## RC Total: 5483 questions
+## AC Total: 1062 questions
+## SI Total: 3081 questions
+## SO Total: 2483 questions
 
 import json
 
@@ -11,13 +14,7 @@ import training.nlp_snippets as NLPSP
 import training.misc_snippets as MSCSP
 import datetime
 
-from sklearn.linear_model import LogisticRegression
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.metrics import classification_report
-from sklearn.metrics import confusion_matrix
-
-import codecs
-from numpy import array_str
+import sklearn_training
 
 from nltk.corpus import stopwords
 from classes.DatabaseManipulation import DatabaseManipulation
@@ -25,14 +22,26 @@ from classes.DatabaseManipulation import DatabaseManipulation
 # Temp variables
 smaller_length = 0
 today_date = datetime.datetime.now()
+kfold = 10
+# ml_list = ['logistic_regression', 'decision_tree', 'svm_svc_linear', 'svm_svc_rbf', 'svm_linear_svr ,'multinomial_nb', 'random-forest', 'kneighbors', 'stochastic-gradient-descent-log', 'stochastic-gradient-descent-svm']
+ml_list = ['logistic_regression', 'decision_tree', 'svm_svc_linear', 'multinomial_nb', 'random-forest', 'stochastic-gradient-descent-log', 'stochastic-gradient-descent-svm']
+
+print "Starting training..."
 
 # Output variables
-sout = "REPORT FROM TRAINING - ITERATION 003\n------------------\n\n"
+filepath = "reports/training_report_iter_007_"
+header = "\n--------------------------------------\n"
+header += "REPORT FROM TRAINING - ITERATION 007\n"
+header += "--------------------------------------\n"
+header += "Algorithms used: "
+for ml in ml_list:
+    header = header + ml + " "
+header += "\n--------------------------------------\n\n"
 
 # Variables
 db_name = "tcc"
-db_collection_list = ["quest_db_iter_01", "quest_rc_iter_01"]
-collection_label_list = [0, 1]  # 0: db, 1: rc
+db_collection_list = ["quest_db_iter_01", "quest_rc_iter_01", "quest_ac_iter_02", "quest_si_iter_02", "quest_so_iter_02"]
+collection_label_list = [0, 1, 2, 3, 4]  # 0: db, 1: rc, 2: ac, 3: si, 4: so
 tokenizer_config = ['downcase', 'short', 'porter_stem', 'stopwords']
 stoptoken_config = ['number', 'key_base_rules']
 split_testing_percentage = 0.2
@@ -53,25 +62,31 @@ db = DatabaseManipulation("mongo")
 for collection in db_collection_list:
     theme_question_list_map[collection] = [MSCSP.bind_question_text_alternatives(q) for q in db.find_all(db_name, collection)]
 
-sout = sout + "Database total questions: " + str(len(theme_question_list_map[db_collection_list[0]])) + "\n"
-sout = sout + "Computer Network total questions: " + str(len(theme_question_list_map[db_collection_list[1]])) + "\n"
+header = header + "Database total questions: " + str(len(theme_question_list_map[db_collection_list[0]])) + "\n"
+header = header + "Computer Network total questions: " + str(len(theme_question_list_map[db_collection_list[1]])) + "\n"
+header = header + "Computer Architecture total questions: " + str(len(theme_question_list_map[db_collection_list[0]])) + "\n"
+header = header + "Information Systems total questions: " + str(len(theme_question_list_map[db_collection_list[1]])) + "\n"
+header = header + "Operational System total questions: " + str(len(theme_question_list_map[db_collection_list[2]])) + "\n"
+
+# Unbalanced themes
+# (N x D+1 matrix - keeping themes together so shuffle more easily later
+for collection in db_collection_list:
+    N = N + len(theme_question_list_map[collection])
 
 # Balance themes
 # Random each theme questions reviews and get same quantity from the theme that has more questions
-smaller_length = len(theme_question_list_map[db_collection_list[0]])
-
-for collection in db_collection_list:
-    actual_len = len(theme_question_list_map[collection])
-    # (N x D+1 matrix - keeping themes together so shuffle more easily later
-    N = N + actual_len
-
-    smaller_length = actual_len if actual_len < smaller_length else smaller_length
-
-sout = sout + "Total questions for each theme after balancing: " + str(smaller_length) + "\n\n"
-
-for collection in db_collection_list:
-    np.random.shuffle(theme_question_list_map[collection])
-    theme_question_list_map[collection] = theme_question_list_map[collection][:smaller_length]
+# smaller_length = len(theme_question_list_map[db_collection_list[0]])
+#
+# for collection in db_collection_list:
+#     actual_len = len(theme_question_list_map[collection])
+#     smaller_length = actual_len if actual_len < smaller_length else smaller_length
+#
+# N = smaller_length * len(collection_label_list)
+# header = header + "Total questions for each theme after balancing: " + str(smaller_length) + "\n\n"
+#
+# for collection in db_collection_list:
+#     np.random.shuffle(theme_question_list_map[collection])
+#     theme_question_list_map[collection] = theme_question_list_map[collection][:smaller_length]
 
 # Iterate questions from each theme, remove extra stoptokens, insert tokens into array and map word index in object
 for collection in db_collection_list:
@@ -108,80 +123,5 @@ for collection in db_collection_list:
         i += 1
     col += 1
 
-testing_len = int(round(len(data) * split_testing_percentage))
-training_len = int(round(len(data) - testing_len))
-
-sout = sout + "Training mode: " + str(100 - split_testing_percentage * 100) + "/" + str(split_testing_percentage * 100) + "\n"
-sout = sout + "Training amount: " + str(training_len) + "\n"
-sout = sout + "Testing amount: " + str(testing_len) + "\n\n"
-
-print testing_len
-print training_len
-print testing_len + training_len
-
-# Shuffle data and create train/test splits
-np.random.shuffle(data)
-# X as data matrix except true label column; Y as true label column
-X = data[:, :-1]
-Y = data[:, -1]
-
-# print(X[:,0].shape)
-# index = 0
-# for i in X[:,0]:
-#     if not np.isfinite(i):
-#         print(index, i)
-#     index +=1
-
-# Last split testing (20%) rows will be used as test
-Xtrain = X[:-testing_len, ]
-Ytrain = Y[:-testing_len, ]
-Xtest = X[-testing_len:, ]
-Ytest = Y[-testing_len:, ]
-
-# Classifying with LogisticRegression
-model = LogisticRegression()
-model.fit(Xtrain, Ytrain)
-modelLRscore = model.score(Xtest, Ytest)
-
-print "Logistic Regression Classification rate: ", modelLRscore
-sout += "--------------------------------------\n"
-sout = sout + "Logistic Regression Main Classification Rate: " + str(modelLRscore) + "\n"
-
-Ypred = model.predict(Xtest)
-classificationReportLR = classification_report(Ytest, Ypred)
-confusionMatrixLR = confusion_matrix(Ytest, Ypred)
-
-print "Metrics for LR"
-print classificationReportLR
-print confusionMatrixLR
-
-sout += "Logistic Regression Metrics\n"
-sout = sout + classificationReportLR + "\n"
-sout = sout + "Confusion Matrix: \n" + array_str(confusionMatrixLR) + "\n\n"
-
-# Classifying with DecisionTreeClassifier
-modelTree = DecisionTreeClassifier()
-modelTree.fit(Xtrain, Ytrain)
-modelDecisionTreeScore = modelTree.score(Xtest, Ytest)
-
-# print "Decision Tree Classification rate: ", modelDecisionTreeScore
-sout += "--------------------------------------\n"
-sout = sout + "Decision Tree Main Classification Rate: " + str(modelDecisionTreeScore) + "\n"
-
-Ypred = modelTree.predict(Xtest)
-classificationReportDecisionTree = classification_report(Ytest, Ypred)
-confusionMatrixDecisionTree = confusion_matrix(Ytest, Ypred)
-
-print "Metrics for DT"
-print classificationReportDecisionTree
-print confusionMatrixDecisionTree
-
-sout += "Decision Tree Metrics\n\n"
-sout = sout + classificationReportDecisionTree + "\n"
-sout = sout + "Confusion Matrix: \n" + array_str(confusionMatrixDecisionTree)
-sout += "\n--------------------------------------"
-
-fname = "reports/training_report_iter_003_" + today_date.strftime("%d-%m-%Y %H:%M:%S") + ".txt"
-fout = codecs.open(fname, 'w+', 'utf8')
-fout.write(sout)  # Stored on disk as UTF-8
-fout.close()
+# Training with report output
+sklearn_training.train_report(data, split_testing_percentage, kfold, ml_list, filepath, header)

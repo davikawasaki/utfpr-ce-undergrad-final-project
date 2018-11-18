@@ -1,0 +1,36 @@
+REPORT FROM TRAINING - ITERATION 003
+------------------
+
+Database total questions: 4449
+Computer Network total questions: 5483
+Total questions for each theme after balancing: 4449
+
+--------------------------------------
+Logistic Regression Main Classification Rate: 0.9256943326463019
+Logistic Regression Metrics
+             precision    recall  f1-score   support
+
+        0.0       0.89      0.98      0.94      5483
+        1.0       0.97      0.86      0.91      4449
+
+avg / total       0.93      0.93      0.93      9932
+
+Confusion Matrix: 
+[[5384   99]
+ [ 639 3810]]
+
+--------------------------------------
+Decision Tree Main Classification Rate: 0.949253922856569
+Decision Tree Metrics
+
+             precision    recall  f1-score   support
+
+        0.0       0.95      0.96      0.95      5483
+        1.0       0.95      0.94      0.94      4449
+
+avg / total       0.95      0.95      0.95      9932
+
+Confusion Matrix: 
+[[5246  237]
+ [ 275 4174]]
+--------------------------------------
