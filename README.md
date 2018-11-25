@@ -87,6 +87,8 @@ $ pip install -r requirements.txt
 
 ## Crawling
 
+ > :warning: All questions extracted in this project **had only an academical purpose**. If the intention is to reproduce the questions extraction, make sure to check each website Terms of Service (TOS). While Questão Certa doesn't have a TOS and legally *probably* wouldn't complain about the crawling, Rota dos Concursos has a [TOS](https://questoes.grancursosonline.com.br/termo-de-uso) that doesn't allow copyrights' reproduction of all the website contents, which probably can result in a fine and legal sue if you use the copyrighted questions for profit.
+
 It was used two different types of crawling softwares using Python to extract IT questions from the two websites:
 
 - [Rota dos Concursos](https://questoes.grancursosonline.com.br/ciencia-da-computacao) website: [PySpider 0.3.10](http://docs.pyspider.org/en/latest/)
