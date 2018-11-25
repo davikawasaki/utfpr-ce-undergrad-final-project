@@ -64,8 +64,12 @@ def train_report(data, split_test, k_fold, ml_list, file_path, header, classes):
     Y = data[:, -1]
 
     # Get length for testing and training
-    testing_len = int(round(len(data) * split_test))
-    training_len = int(round(len(data) - testing_len))
+    if split_test is None:
+        testing_len = 0
+        training_len = 0
+    else:
+        testing_len = int(round(len(data) * split_test))
+        training_len = int(round(len(data) - testing_len))
 
     # Input data
     Xtrain, Xtest, Ytrain, Ytest = train_test_split(X, Y, test_size=split_test, random_state=0)
