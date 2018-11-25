@@ -13,7 +13,6 @@ import training.snippets.training_snippets as TRNSP
 ##
 # 1. CONFIG VARIABLES
 ##
-db_env = 'local'
 
 ml_list = ['logistic_regression', 'decision_tree', 'svm_svc_linear', 'multinomial_nb',
            'random-forest', 'stochastic-gradient-descent-log', 'stochastic-gradient-descent-svm']
@@ -23,6 +22,7 @@ balancing = True
 iter_number = 1
 db_type = "mongo"
 db_name = "tcc"
+db_env = 'local'
 db_collection_list = [{"collec_name": "quest_db_iter_01", "theme_name": "Database"},
                       {"collec_name": "quest_rc_iter_01", "theme_name": "Computer Network"}]
 collection_label_list = [0, 1]  # 0: db, 1: rc

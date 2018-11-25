@@ -25,6 +25,7 @@ balancing = True
 iter_number = 1
 db_type = "mongo"
 db_name = "tcc"
+db_env = "local"
 db_collection_list = [{"collec_name": "quest_db_iter_01", "theme_name": "Database"},
                       {"collec_name": "quest_rc_iter_01", "theme_name": "Computer Network"},
                       {"collec_name": "quest_ac_iter_02", "theme_name": "Computer Architecture"},
@@ -42,4 +43,4 @@ output_file_path = "reports/training_report_iter_003_"
 TRNSP.supervised_training(ml_list, split_test, k_fold, balancing,
                           iter_number, db_type, db_name, db_collection_list,
                           collection_label_list, tokenizer_config,
-                          stoptoken_config, output_file_path)
+                          stoptoken_config, output_file_path, db_env)
