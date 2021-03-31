@@ -10,7 +10,7 @@ idna==2.7
 itsdangerous==0.24
 Jinja2==2.10
 jsmin==2.2.2
-lxml==4.2.4
+lxml==4.6.3
 MarkupSafe==1.0
 nltk==3.3
 numpy==1.15.1
