@@ -30,6 +30,6 @@ tblib==1.3.2
 tornado==4.5.3
 u-msgpack-python==2.5.0
 Unidecode==1.0.22
-urllib3==1.23
+urllib3==1.26.5
 Werkzeug==0.14.1
 WsgiDAV==2.4.1
